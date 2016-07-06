@@ -22,20 +22,17 @@
             return type;
         }
 
-        //Copyright 2010 Nicholas C. Zakas. All rights reserved.
-        //MIT Licensed
-        function getDirection(element) {
-            var result = null;
-            if (element){
-                if (window.getComputedStyle){
-                    result = window.getComputedStyle(element,null).direction;
-                } else if (element.currentStyle){
-                    result = element.currentStyle.direction;
+        function getDirection(element, value) {
+            if (value === undefined) {
+                if (window.getComputedStyle) {
+                    return window.getComputedStyle(element, null).direction;
+                } else if (element.currentStyle) {
+                    return element.currentStyle.direction;
                 }
+            } else {
+                element.style.direction = value;
             }
-
-            return result;
-        }
+        };
 
         function getScrollType(element) {
 
@@ -75,7 +72,10 @@
                 return getScrollType(this[0]).get();
             }
         };
-
+        
+        angular.element.prototype.direction = function(value) {
+            return getDirection(this[0], value);
+        };
 
     }]);
 

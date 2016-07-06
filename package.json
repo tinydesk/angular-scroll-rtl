@@ -1,6 +1,6 @@
 {
   "name": "angular-scroll-rtl",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Provides an abstraction layer to compensate for browser differences in handling scrollLeft in RTL mode.",
   "main": "dist/angular-scroll-rtl.js",
   "dependencies": {

@@ -19,17 +19,17 @@
     <div ng-controller="demoCtrl" class="demo" dir="{{ rtl ? 'rtl' : 'ltr' }}">
       
       <div class="position">
-        <div class="outer" scroll-left="scrollLeftFirst">
+        <div class="outer" scroll-left="scrollLeftFirst" direction="dirFirst">
           <div class="inner">
-            <div class="fixed">scrollLeft: {{scrollLeftFirst}}</div>
+            <div class="fixed">scrollLeft ({{dirFirst}}): {{scrollLeftFirst}}</div>
           </div>
         </div>
       </div>
 
       <div class="position">
-        <div  class="outer" dir="rtl" scroll-left="scrollLeftSecond">
+        <div  class="outer" dir="rtl" scroll-left="scrollLeftSecond" direction="dirSecond">
           <div class="inner">
-            <div class="fixed">scrollLeft: {{scrollLeftSecond}}</div>
+            <div class="fixed">scrollLeft ({{dirSecond}}): {{scrollLeftSecond}}</div>
           </div>
         </div>
       </div>
@@ -47,10 +47,12 @@
           return {
             restrict: 'A',
             scope: {
-              scrollLeft: '='
+              scrollLeft: '=',
+              direction: '='
             },
             link: function(scope, elem) {
               scope.scrollLeft = elem.scrollLeft();
+              scope.direction = elem.direction();
               elem.on('scroll', function() {
                 scope.$apply(function() {
                   scope.scrollLeft = elem.scrollLeft();
