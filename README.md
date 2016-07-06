@@ -20,7 +20,7 @@ Make sure that `dist/angular-scroll-rtl.js` is included in your html file.
 
 ## Usage
 
-The module will extend the `angular.element` prototype by adding an additional method:
+The module will extend the `angular.element` prototype by adding the following methods:
 
 ### scrollLeft(value)
 
